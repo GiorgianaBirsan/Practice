@@ -42,7 +42,7 @@ input {
     text-align: center;
 }
 
-.btn-component #btn-login {
+#btn-login {
     padding: 20px 40px;
     color: blueviolet;
     font-weight: bold;
@@ -51,8 +51,4 @@ input {
     border-color: blueviolet;
     position: relative;
     -webkit-transition: -webkit-transform 0.3s ease-in-out;
-}
-
-.btn-component:hover #btn-login {
-    -webkit-transform: translateX(60%);
 }

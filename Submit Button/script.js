@@ -1,13 +1,30 @@
-const formPassword = document.querySelector("#password");
 const btnLogin = document.querySelector("#btn-login");
+var position;
+const password = "proiect123";
 
-password.textContent = "proiect123"
-    //console.log(password.textContent);
+let formPassword = document.getElementById("password").addEventListener("input", () => //console.log(document.getElementById("password").value;
+    {
+        if (document.getElementById("password").value !== password) {
+            btnLogin.addEventListener("mouseover", function() {
+                position ? (position = 0) : (position = 150);
+                btnLogin.style.transform = `translate(${position}px,0px)`;
+                btnLogin.style.transition = "all 0.3s ease";
+            });
+            document.getElementById("password").style.borderColor = "red";
+            btnLogin.style.background = "red";
+        } else {
+            btnLogin.style.transform = `translate(0px,0px)`;
+            btnLogin.addEventListener("mouseout", function() {
+                position = 0;
+                btnLogin.style.transform = `translate(${position}px,0px)`;
 
-function rightMove(x) {
-    x.style.marginRight = "-200px";
-};
+            });
+            btnLogin.addEventListener("mouseover", function() {
+                position = 0;
+                btnLogin.style.transform = `translate(${position}px,0px)`;
 
-function leftMove(x) {
-    x.style.marginRight = "200px";
-};
+            });
+            document.getElementById("password").style.borderColor = "green";
+            btnLogin.style.background = "green";
+        }
+    });
