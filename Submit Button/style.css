@@ -9,7 +9,6 @@ body {
 }
 
 .login-form {
-    background-color: cornsilk;
     width: 50%;
     height: auto;
     display: flex;
@@ -20,7 +19,10 @@ body {
     padding: 50px;
     margin: auto;
     margin-top: 100px;
-    ;
+    background-color: white;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    box-shadow: 1px 1px 10px #c7c7c7;
 }
 
 .username-component,
@@ -46,6 +48,7 @@ input {
     padding: 20px 40px;
     color: blueviolet;
     font-weight: bold;
+    opacity: 1;
     font-size: larger;
     background-color: azure;
     border-color: blueviolet;
