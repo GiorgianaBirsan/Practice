@@ -11,12 +11,14 @@ import Dashboard from './pages/Dashboard';
 
 export default function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Dashboard />}></Route>
-        {/* <Route path="/" element={<Navbar />}></Route> */}
-      </Routes>
-    </BrowserRouter>
+    <ChakraProvider theme={theme}>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Dashboard />}></Route>
+          {/* <Route path="/" element={<Navbar />}></Route> */}
+        </Routes>
+      </BrowserRouter>
+    </ChakraProvider>
   );
 }
 
@@ -24,12 +26,10 @@ const container = document.getElementById('root');
 const root = ReactDOM.createRoot(container);
 
 root.render(
-  <ChakraProvider theme={theme}>
-    <StrictMode>
-      <ColorModeScript />
-      <App />
-    </StrictMode>
-  </ChakraProvider>
+  <StrictMode>
+    <ColorModeScript />
+    <App />
+  </StrictMode>
 );
 
 // If you want your app to work offline and load faster, you can change

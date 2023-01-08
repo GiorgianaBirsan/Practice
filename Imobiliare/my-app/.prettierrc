@@ -2,5 +2,10 @@
     "arrowParens": "avoid",
     "trailingComma": "es5",
     "singleQuote": true,
-    "semi": true
+    "semi": true,
+    "tabWidth": 2, 
+    "useTabs": false, 
+    "printWidth": 100,
+    "importOrder":"['^~(.*)', '^..?/(.*)']", 
+    "importOrderSeparation": true
 }
