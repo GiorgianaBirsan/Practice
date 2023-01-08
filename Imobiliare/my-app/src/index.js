@@ -2,7 +2,7 @@ import { ColorModeScript } from '@chakra-ui/react';
 import React, { BrowserRouter, Routes, Route } from 'react-router-dom';
 import * as ReactDOM from 'react-dom/client';
 //import App from './App';
-import Navbar from './pages/Navbar';
+import Navbar from './components/Navbar/Navbar';
 import reportWebVitals from './reportWebVitals';
 import * as serviceWorker from './serviceWorker';
 import { ChakraProvider, theme } from '@chakra-ui/react';
@@ -14,8 +14,8 @@ export default function App() {
     <ChakraProvider theme={theme}>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Dashboard />}></Route>
-          {/* <Route path="/" element={<Navbar />}></Route> */}
+          {/* <Route path="/" element={<Dashboard />}></Route> */}
+          <Route path="/" element={<Navbar />}></Route>
         </Routes>
       </BrowserRouter>
     </ChakraProvider>
