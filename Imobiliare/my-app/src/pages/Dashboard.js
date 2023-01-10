@@ -1,14 +1,20 @@
-
-import React from 'react';
-import { BrowserRouter, Route, Link } from 'react-router-dom';
+import React, { useState } from 'react';
 import { AdItem, Navbar } from '../components';
+import Ads from '../components/Ads/Ads';
 
 const Dashboard = () => {
+  const [listAds, setListAds] = useState([]);
+
   return (
     <>
-    <Navbar/>
-     <AdItem></AdItem>
-
+      <Navbar
+        handlerSetList={ad =>
+          setListAds(
+             [ad, ...listAds]
+          )
+        }
+      />
+      <Ads listAds={listAds} />
     </>
   );
 };

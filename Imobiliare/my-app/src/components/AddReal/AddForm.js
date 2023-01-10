@@ -1,53 +1,148 @@
-import {
-  FormControl,
-  FormLabel,
-  Heading,
-  Input,
-  RadioGroup,
-  VStack,
-  Button,
-  Radio,
-  Grid,
-  Box,
-} from '@chakra-ui/react';
-import React from 'react';
+import { FormControl, FormLabel, Input, VStack, Button, Box } from '@chakra-ui/react';
+import React, { useState } from 'react';
 
-const AddForm = () => {
+const initialValues = {
+  title: '',
+  address: '',
+  description: '',
+  price: '',
+  phone: '',
+  room: '',
+};
 
-  const phonenr= "00000000";
+function AddForm(props) {
+  const [values, setValues] = useState(initialValues);
+  // const [rooms, setRooms] = useState('1room');
+
+  const handlerInputForm = event => {
+    const { name, value } = event.target;
+    setValues({ ...values, [name]: value });
+  };
+
+  // const onOptionChange = event => {
+  //   setRooms(event.target.value);
+  // };
+
   return (
     <>
       <Box>
-        
-        <FormControl>
-          <FormLabel mt={5}>Title</FormLabel>
-          <Input variant="outline" type="text" maxLimit={150} />
+        <form
+          onSubmit={event => {
+            event.preventDefault();
+            props.handlerAddAd(values);
+            props.handlerModalVisibility(false);
+          }}
+        >
+          <FormControl>
+            <FormLabel mt={5} fontSize="xs">
+              Title
+            </FormLabel>
+            <Input
+              value={values.title}
+              variant="outline"
+              type="text"
+              max={150}
+              onChange={handlerInputForm}
+              name="title"
+              isRequired={true}
+            />
 
-          <FormLabel mt={5}>Adress</FormLabel>
-          <Input variant="outline" type="text" />
+            <FormLabel mt={5} fontSize="xs">
+              Adress
+            </FormLabel>
+            <Input
+              value={values.address}
+              variant="outline"
+              type="text"
+              onChange={handlerInputForm}
+              name="address"
+              isRequired={true}
+            />
 
-          <FormLabel mt={5}>Description</FormLabel>
-          <Input variant="outline" type="text" maxLimit={500} />
+            <FormLabel mt={5} fontSize="xs">
+              Description
+            </FormLabel>
+            <Input
+              value={values.description}
+              variant="outline"
+              type="text"
+              maxLength={5}
+              onChange={handlerInputForm}
+              name="description"
+              isRequired={true}
+            />
 
-          <FormLabel mt={5}>Rooms number</FormLabel>
-          <RadioGroup>
-            <VStack>
-              <Radio value="1room">1 room </Radio>
-              <Radio value="2rooms">2 rooms </Radio>
-              <Radio value="3rooms">3 rooms </Radio>
+            <FormLabel mt={5} fontSize="xs">
+              Rooms number
+            </FormLabel>
+            <VStack align="flex-start">
+              <label>
+                <input
+                  type="radio"
+                  id="1room"
+                  value="1 room"
+                  name="room"
+                  // checked={name === '1room'}
+                  onChange={handlerInputForm}
+                />
+                1 room
+              </label>
+
+              <label>
+                <input
+                  type="radio"
+                  id="2rooms"
+                  value="2 rooms"
+                  name="room"
+                  //checked={rooms === '2room'}
+                  onChange={handlerInputForm}
+                />
+                2 rooms
+              </label>
+
+              <label>
+                <input
+                  type="radio"
+                  id="3 rooms"
+                  value="3 rooms"
+                  name="room"
+                  //checked={rooms === '3room'}
+                  onChange={handlerInputForm}
+                />
+                3 rooms
+              </label>
             </VStack>
-          </RadioGroup>
 
-          <FormLabel mt={5}>Price</FormLabel>
-          <Input variant="outline" type="number" />
+            <FormLabel mt={5} fontSize="xs">
+              Price
+            </FormLabel>
+            <Input
+              value={values.price}
+              variant="outline"
+              type="number"
+              onChange={handlerInputForm}
+              name="price"
+              isRequired={true}
+            />
 
-          <FormLabel mt={5}>Phone number</FormLabel>
-          <Input variant="outline" type="number" />
-
-        </FormControl>
+            <FormLabel mt={5} fontSize="xs">
+              Phone number
+            </FormLabel>
+            <Input
+              value={values.phone}
+              variant="outline"
+              type="number"
+              onChange={handlerInputForm}
+              name="phone"
+            />
+          </FormControl>
+          <Button colorScheme="blue" type="submit" mt={3}>
+            Save
+          </Button>
+        </form>
       </Box>
     </>
   );
-};
+}
 
 export default AddForm;

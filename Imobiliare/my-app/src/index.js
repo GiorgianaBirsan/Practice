@@ -14,8 +14,8 @@ export default function App() {
     <ChakraProvider theme={theme}>
       <BrowserRouter>
         <Routes>
-          {/* <Route path="/" element={<Dashboard />}></Route> */}
-          <Route path="/" element={<Navbar />}></Route>
+          <Route path="/" element={<Dashboard />}></Route>
+          {/* <Route path="/" element={<Navbar />}></Route> */}
         </Routes>
       </BrowserRouter>
     </ChakraProvider>
