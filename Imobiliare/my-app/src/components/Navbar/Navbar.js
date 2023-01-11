@@ -1,45 +1,33 @@
 import React, { useState } from 'react';
-import { BrowserRouter, Rout, Link } from 'react-router-dom';
 import {
-  Card,
-  CardHeader,
-  CardBody,
-  CardFooter,
   Text,
-  Heading,
   Button,
-  Box,
-  Grid,
-  VStack,
-  HStack,
-  useDisclosure,
   Modal,
   ModalContent,
   ModalOverlay,
   ModalBody,
   ModalFooter,
-  ModalHeader,
   ModalCloseButton,
   Flex,
+  ModalHeader,
 } from '@chakra-ui/react';
 import AddForm from '../AddReal/AddForm';
-import AdComponent from '../AdItem/AdItem';
 
-function Navbar() {
+function Navbar(props) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
     <>
       <Flex justifyContent="center" alignItems="center">
         <Flex flexDirection="column">
-          <Text>Adauga </Text>
           <Button
+           mt={10}
             colorScheme="blue"
             onClick={() => {
               setIsOpen(!isOpen);
             }}
           >
-            Add
+           + Create ad
           </Button>
         </Flex>
       </Flex>
@@ -48,15 +36,15 @@ function Navbar() {
         <ModalOverlay />
         <ModalContent>
           <ModalCloseButton />
+           <ModalHeader align="center" p={10}>Create your real estate ad</ModalHeader>
           <ModalBody>
-            <AddForm />
+            <AddForm handlerAddAd={props.handlerSetList} handlerModalVisibility={setIsOpen} />
           </ModalBody>
 
           <ModalFooter>
-            <Button colorScheme="blue" mr={3} onClick={() => setIsOpen(!isOpen)}>
-              Save
+            <Button variant="ghost" onClick={() => setIsOpen(!isOpen)}>
+              Cancel
             </Button>
-            <Button variant="ghost">Close</Button>
           </ModalFooter>
         </ModalContent>
       </Modal>
