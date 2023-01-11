@@ -12,16 +12,11 @@ const initialValues = {
 
 function AddForm(props) {
   const [values, setValues] = useState(initialValues);
-  // const [rooms, setRooms] = useState('1room');
 
   const handlerInputForm = event => {
     const { name, value } = event.target;
     setValues({ ...values, [name]: value });
   };
-
-  // const onOptionChange = event => {
-  //   setRooms(event.target.value);
-  // };
 
   return (
     <>
