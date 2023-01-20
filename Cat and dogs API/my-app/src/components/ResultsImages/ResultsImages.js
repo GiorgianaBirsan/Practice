@@ -8,14 +8,14 @@ export default function ResultsImages(props) {
     <>
       <Flex wrap="wrap" dir="row" gap={5} justifyContent="center">
         {images.map((image, index) => {
+        
           return (
-            <Card maxW={200} maxH={200}>
+            <Card maxW={200} maxH={200} key={index}>
               <img
                 src={image.url}
-                alt="cat"
-                key={index}
                 style={{ width: '100%', height: '100%' }}
                 object-fit="cover"
+                key={index}
               />
             </Card>
           );

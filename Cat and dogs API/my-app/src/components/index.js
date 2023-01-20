@@ -1,3 +1,4 @@
 import { FormRequest } from './FormRequest';
-import {ResultsImages} from './ResultsImages';
-export { FormRequest , ResultsImages};
+import { ResultsImages } from './ResultsImages';
+import { Requests } from './Requests';
+export { FormRequest, ResultsImages, Requests };
