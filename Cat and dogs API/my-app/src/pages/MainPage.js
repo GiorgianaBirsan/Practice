@@ -15,37 +15,38 @@ const animalMapper = {
 
 export default function MainPage(props) {
   const [images, setImages] = useState([]);
-
   const [selectedOption, setSelectedOption] = useState({ animalType: '', limiOfImg: '' });
 
-  const handlerOptions = () => {
-    // const {selectedOption} =props
-    // setSelectedOption({selectedOption});
-  };
-  console.log('off', selectedOption);
+  function handlerOptions(value) {
+    setSelectedOption(value);
+  }
+
   useEffect(() => {
-    fetch(
-      'https://api.the' +
-        animalMapper.cat.type +
-        'api.com/v1/images/search?limit=' +
-        '20' +
-        '&api_key=' +
-        animalMapper['cat'].apiKey,
-      {
-        method: 'GET',
-        headers: {
-          // 'x-api-key': 'live_TzbzEVjISE4WznpqRvWLKzhit0KqruGWLCh9dLNi1RUsC3t5oyqhzWft2qCsFLCV',
-          'Content-type': 'application/json',
-        },
-      }
-    )
-      .then(result => {
-        return result.json();
-      })
-      .then(data => {
-        setImages(data);
-      });
-  }, [props]);
+    console.log(selectedOption);
+    if (selectedOption.animalType !== '' && animalMapper[selectedOption.animalType] !== undefined) {
+      fetch(
+        'https://api.the' +
+          animalMapper[selectedOption.animalType].type +
+          'api.com/v1/images/search?limit=' +
+          selectedOption.limiOfImg +
+          '&api_key=' +
+          animalMapper[selectedOption.animalType].apiKey,
+        {
+          method: 'GET',
+          headers: {
+            // 'x-api-key': 'live_TzbzEVjISE4WznpqRvWLKzhit0KqruGWLCh9dLNi1RUsC3t5oyqhzWft2qCsFLCV',
+            'Content-type': 'application/json',
+          },
+        }
+      )
+        .then(result => {
+          return result.json();
+        })
+        .then(data => {
+          setImages(data);
+        });
+    }
+  }, [selectedOption]);
 
   return (
     <>

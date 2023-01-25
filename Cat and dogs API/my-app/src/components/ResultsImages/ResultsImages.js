@@ -8,7 +8,6 @@ export default function ResultsImages(props) {
     <>
       <Flex wrap="wrap" dir="row" gap={5} justifyContent="center">
         {images.map((image, index) => {
-        
           return (
             <Card maxW={200} maxH={200} key={index}>
               <img
