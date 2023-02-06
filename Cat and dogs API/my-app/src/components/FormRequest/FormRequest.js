@@ -8,7 +8,11 @@ import {
   FormControl,
 } from '@chakra-ui/react';
 import React, { useState } from 'react';
-import { Requests } from '../Requests';
+
+let animals = [
+  { label: 'Cat', value: 'cat' },
+  { label: 'Dog', value: 'dog' },
+];
 
 const initialValues = {
   animalType: '',
@@ -26,7 +30,6 @@ export default function FormRequest(props) {
   const handlerSubmit = event => {
     event.preventDefault();
     props.handlerOptions(values);
-    //console.log("fmm", props.handlerOptions(values))
   };
 
   return (
@@ -34,13 +37,17 @@ export default function FormRequest(props) {
       <form onSubmit={handlerSubmit}>
         <FormControl>
           <Flex justifyContent="center" dir="row" mt={20} gap={5}>
-            <Input
-              type="text"
-              placeholder="Cat or dog..."
+            <Select
+              placeholder="Select animal..."
+              variant="outline"
+              name="animalType"
               value={values.animalType}
               onChange={handlerSelectedOption}
-              name="animalType"
-            />
+            >
+              {animals.map(animal => {
+                return <option value={animal.value}> {animal.label} </option>;
+              })}
+            </Select>
 
             <InputGroup w="max-content">
               <InputLeftAddon color="gray">nr</InputLeftAddon>
@@ -54,7 +61,7 @@ export default function FormRequest(props) {
               />
             </InputGroup>
 
-            <Button colorScheme="green" type="submnit">
+            <Button colorScheme="green" type="submnit" p={5}>
               Search
             </Button>
           </Flex>
