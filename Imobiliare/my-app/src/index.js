@@ -1,8 +1,7 @@
 import { ColorModeScript } from '@chakra-ui/react';
 import React, { BrowserRouter, Routes, Route } from 'react-router-dom';
 import * as ReactDOM from 'react-dom/client';
-//import App from './App';
-import Navbar from './components/Navbar/Navbar';
+
 import reportWebVitals from './reportWebVitals';
 import * as serviceWorker from './serviceWorker';
 import { ChakraProvider, theme } from '@chakra-ui/react';
