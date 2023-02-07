@@ -3,6 +3,7 @@ import { Navbar } from '../components';
 import Ads from '../components/Ads/Ads';
 import getListAds from '../api/listAds/getListAds';
 import updateListAds from '../api/listAds/updateListAds';
+import { Text } from '@chakra-ui/react';
 
 const Dashboard = () => {
   const [listAds, setListAds] = useState([]);
@@ -17,15 +18,19 @@ const Dashboard = () => {
 
   function editHandler(ad) {
     if (listAds.length > 0) {
-      const list = listAds.filter(adList => adList.id !== ad.id);
-      setListAds([ad, ...list]);
-      updateListAds([ad, ...list]);
+      const listFree = listAds.filter(adList => adList.id !== ad.id);
+
+      const list = listAds.map(adList => {
+        if (adList.id === ad.id) {
+          updateListAds([ad, ...listFree].sort((a, b) => b.id - a.id));
+          setListAds([ad, ...listFree].sort((a, b) => b.id - a.id));
+        }
+      });
     }
   }
 
   function handlerSetList(ad) {
     ad.id = listAds.length > 0 ? listAds[0].id + 1 : 0;
-
     setListAds([ad, ...listAds]);
     updateListAds([ad, ...listAds]);
   }
@@ -33,15 +38,20 @@ const Dashboard = () => {
   useEffect(() => {
     const list = async () => {
       const getList = await getListAds();
-      setListAds(getList);
+      if (getList.length > 0) {
+        setListAds(getList);
+      }
     };
+
     list();
   }, [setListAds]);
 
   return (
     <>
       <Navbar handlerSetList={handlerSetList} />
-      <Ads listAds={listAds} deleteByIndex={deleteByIndex} editHandler={editHandler} />
+      <Ads listAds={listAds} deleteByIndex={deleteByIndex} editHandler={editHandler} >
+      
+      </Ads>
     </>
   );
 };

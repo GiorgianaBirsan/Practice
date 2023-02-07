@@ -15,7 +15,6 @@ import {
 import { ModalComponent } from '../Modals';
 import AddForm from '../AddReal/AddForm';
 import { DeleteAd } from '../Buttons/DeleteAd';
-//import getListAds from '../../api/listAds/getListAds';
 
 export default function AdItem(props) {
   const [isOpen, setIsOpen] = useState(false);
@@ -64,7 +63,6 @@ export default function AdItem(props) {
         setIsOpen={() => setIsOpen(!isOpen)}
         children={
           <AddForm
-       
             handlerModalVisibility={setIsOpen}
             edit={props.edit}
             ad={{
