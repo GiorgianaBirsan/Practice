@@ -64,9 +64,9 @@ export default function AdItem(props) {
         setIsOpen={() => setIsOpen(!isOpen)}
         children={
           <AddForm
-            handlerAddAd={props.handlerSetList}
+       
             handlerModalVisibility={setIsOpen}
-            editHandler={props.editHandler(props)}
+            edit={props.edit}
             ad={{
               id: props.id,
               title: props.title,

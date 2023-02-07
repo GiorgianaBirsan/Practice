@@ -12,7 +12,7 @@ export default function Ads(props) {
           return (
             <AdItem
               key={index}
-              id={index}
+              id={ad.id}
               title={ad.title}
               description={ad.description}
               address={ad.address}
@@ -20,7 +20,7 @@ export default function Ads(props) {
               surface={ad.surface}
               phone={ad.phone}
               room={ad.room}
-              editHandler={props.editHandler}
+              edit={props.editHandler}
               deletehandler={() => props.deleteByIndex(ad.id)}
             />
           );

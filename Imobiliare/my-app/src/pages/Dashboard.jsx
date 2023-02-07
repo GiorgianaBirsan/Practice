@@ -16,13 +16,16 @@ const Dashboard = () => {
   }
 
   function editHandler(ad) {
-    //const edit = JSON.parse(getListAds[id]);
-    //  updateListAds(ad);
-    console.log('asd', ad);
+    if (listAds.length > 0) {
+      const list = listAds.filter(adList => adList.id !== ad.id);
+      setListAds([ad, ...list]);
+      updateListAds([ad, ...list]);
+    }
   }
 
   function handlerSetList(ad) {
     ad.id = listAds.length > 0 ? listAds[0].id + 1 : 0;
+
     setListAds([ad, ...listAds]);
     updateListAds([ad, ...listAds]);
   }

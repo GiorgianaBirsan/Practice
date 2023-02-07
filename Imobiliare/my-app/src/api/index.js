@@ -1,2 +1,2 @@
-import { getListAds, updateListAds, deleteAd } from './listAds';
-export { getListAds, updateListAds, deleteAd };
+import { getListAds, updateListAds } from './listAds';
+export { getListAds, updateListAds };

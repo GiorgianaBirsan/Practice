@@ -3,10 +3,8 @@ import { Button, Flex } from '@chakra-ui/react';
 import AddForm from '../AddReal/AddForm';
 import { ModalComponent } from '../Modals';
 
-
 function Navbar(props) {
   const [isOpen, setIsOpen] = useState(false);
-
 
   return (
     <>
@@ -28,12 +26,11 @@ function Navbar(props) {
         isOpen={isOpen}
         setIsOpen={() => setIsOpen(!isOpen)}
         children={
-          <AddForm handlerAddAd={props.handlerSetList}  handlerModalVisibility={setIsOpen} />
+          <AddForm handlerAddAd={props.handlerSetList} handlerModalVisibility={setIsOpen} />
         }
         title="Describe your real estate"
       />
     </>
-  
   );
 }
 

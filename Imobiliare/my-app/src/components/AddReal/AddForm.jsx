@@ -26,7 +26,6 @@ function AddForm(props) {
   const handlerInputForm = event => {
     const { name, value } = event.target;
     setValues({ ...values, [name]: value });
-    console.log('dd', values);
   };
 
   return (
@@ -35,8 +34,7 @@ function AddForm(props) {
         <form
           onSubmit={event => {
             event.preventDefault();
-            props.editHandler(values);
-            props.handlerAddAd(values);
+            props.ad ? props.edit(values) : props.handlerAddAd(values);
             props.handlerModalVisibility(false);
           }}
         >
@@ -125,7 +123,7 @@ function AddForm(props) {
               name="phone"
             />
           </FormControl>
-          <Button colorScheme="blue" mt={10} ml="40%">
+          <Button colorScheme="blue" mt={10} ml="40%" type="submit">
             Save
           </Button>
         </form>
