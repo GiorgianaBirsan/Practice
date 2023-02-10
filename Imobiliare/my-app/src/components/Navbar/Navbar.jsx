@@ -11,11 +11,11 @@ function Navbar(props) {
     <>
       <Flex justifyContent="center" alignItems="center">
         <Flex flexDirection="column" gap={10} align="center" mt={20}>
-          {/* {isVisible && (
+          {isVisible && (
             <Text isVisible={isVisible} setIsVisible={() => setIsVisible(!isVisible)}>
               Nothing here!
             </Text>
-          )} */}
+          )}
 
           <Button
             mt={10}

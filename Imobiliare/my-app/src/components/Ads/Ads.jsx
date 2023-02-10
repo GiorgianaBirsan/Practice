@@ -13,6 +13,7 @@ export default function Ads(props) {
             <AdItem
               key={index}
               id={ad.id}
+              file={ad.file}
               title={ad.title}
               description={ad.description}
               address={ad.address}

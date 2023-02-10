@@ -8,6 +8,7 @@ import {
   CardHeader,
   Heading,
   HStack,
+  Image,
   Stack,
   Text,
   VStack,
@@ -21,8 +22,17 @@ export default function AdItem(props) {
 
   return (
     <>
-      <Card id={props.id} mt={10}>
-        <CardHeader>
+      <Card id={props.id} mt={10}  direction={{ base: 'column', sm: 'row' }}>
+        <Image
+    objectFit='cover'
+    maxW={{ base: '100%', sm: '400px' }}
+    src={props.file}
+    alt='apartment image'
+  />
+      
+       
+<Stack w={2000}>
+        <CardBody >
           <HStack justifyContent="space-between">
             <VStack align="flex-start">
               <Heading>{props.title}</Heading>
@@ -37,9 +47,6 @@ export default function AdItem(props) {
               Edit
             </Button>
           </HStack>
-        </CardHeader>
-
-        <CardBody>
           <Stack>
             <Text>{props.room}</Text>
             <Text fontSize="sm" color="gray">
@@ -56,6 +63,7 @@ export default function AdItem(props) {
 
           <DeleteAd deletehandler={props.deletehandler}></DeleteAd>
         </CardFooter>
+        </Stack>
       </Card>
 
       <ModalComponent
@@ -67,6 +75,7 @@ export default function AdItem(props) {
             edit={props.edit}
             ad={{
               id: props.id,
+              src: props.file,
               title: props.title,
               address: props.address,
               description: props.description,

@@ -10,7 +10,9 @@ const initialValues = {
   surface: '',
   phone: '',
   room: '',
+  file: 'https://t4.ftcdn.net/jpg/04/73/25/49/360_F_473254957_bxG9yf4ly7OBO5I0O5KABlN930GwaMQz.jpg'
 };
+
 
 let nrOfRooms = [
   { label: '1 room', value: '1 room' },
@@ -22,6 +24,16 @@ let nrOfRooms = [
 
 function AddForm(props) {
   const [values, setValues] = useState(props.ad ? props.ad : initialValues);
+  const [file, setFile] = useState(initialValues.file)
+
+  function handleChange(e) {
+    setFile(URL.createObjectURL(e.target.files[0]));
+  }
+
+  if (handleChange) {
+    values.file = file;
+   } 
+  
 
   const handlerInputForm = event => {
     const { name, value } = event.target;
@@ -122,6 +134,11 @@ function AddForm(props) {
               onChange={handlerInputForm}
               name="phone"
             />
+
+            <FormLabel mt={5} fontSize="xs">
+              Uploade images
+            </FormLabel>
+            <input filename={values.file} name="file" type="file" onChange={handleChange} />
           </FormControl>
           <Button colorScheme="blue" mt={10} ml="40%" type="submit">
             Save
