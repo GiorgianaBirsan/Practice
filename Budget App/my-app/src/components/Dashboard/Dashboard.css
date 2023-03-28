@@ -1,0 +1,36 @@
+*{ 
+    font-size: 18px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.dashboard_side{
+    background-color: rgb(241, 241, 241);
+    width: 80vw;
+    margin-left: 40px;
+    padding: 70px;
+}
+.dashboard_header{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    height: 50px;
+}
+
+#log_expense{
+    background-color: black;
+    color: rgb(233, 233, 233);
+    border-radius: 5%;
+    border:solid 1px  rgb(231, 231, 231);
+    text-align: center;
+    padding: 10px 20px;
+}
+.list_overview{
+    margin-top: 100px;
+}
+.total_incomes, .total_expenses{
+    width: 100%;
+}
+.list_expenses{
+    margin-top: 50px;
+}
