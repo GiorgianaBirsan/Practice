@@ -1,49 +1,35 @@
 import React, {useState, useEffect} from "react";
 import {AddTransaction, Transactions} from "..";
+import getWallet from "../../hooks/getWallet";
+import updateWallet from "../../hooks/updateWallet";
 import {Modal} from "../common/Modal";
 import ListOverview from "../ListOverview/ListOverview";
 import "./Dashboard.css";
 
-let inflowAmount = 0;
-let outflowAmount = 0;
+  let inflow = 0;
+  let outflow = 0;
 
-export default function Dashboard(props) {
+export default function Dashboard() {
   const [isOpen, setIsOpen] = useState(false);
   const [transactionList, setTransactionList] = useState([]);
-  const [inflow, setInflow] = useState(0);
-  const [outflow, setOutflow] = useState(0);
 
-  function handlerSetList(transaction) {
+ function handlerSetList(transaction) {
     transaction.amount_type === "income"
-      ? (inflowAmount += Number(transaction.amount))
-      : (outflowAmount += Number(transaction.amount));
-    setTransactionList([transaction, ...transactionList]);
+      ? (inflow += Number(transaction.amount))
+      : (outflow += Number(transaction.amount));
+    setTransactionList([...transactionList, transaction]);
+    console.log("inflow", inflow);
+    console.log("out", outflow);
   }
 
-  //GET / SET TRANSACTION ITEMS FROM/IN LIST FROM LOCAL STORAGE
-  useEffect(() => {
-    const transactions = JSON.parse(localStorage.getItem("transactionList"));
-    if (transactions) {
-      transactions.forEach((element) => {
-        element.amount_type === "income"
-          ? setInflow((inflowAmount += Number(element.amount)))
-          : setOutflow((outflowAmount += Number(element.amount)));
-      });
+  // useEffect(() => {
+  //   const list =  () => {
+  //     const getList = getWallet();
+  //     setTransactionList([getList]);
+  //   };
 
-      setTransactionList(transactions);
-    }
-  }, []);
-
-  useEffect(() => {
-    if (transactionList?.length) {
-      localStorage.setItem("transactionList", JSON.stringify(transactionList));
-    }
-    transactionList.forEach((element) => {
-      element.amount_type === "income"
-        ? setInflow(inflowAmount)
-        : setOutflow(outflowAmount);
-    });
-  }, [transactionList]);
+  //   list();
+  // }, [setTransactionList]);
 
   return (
     <div className="dashboard_side">
@@ -54,8 +40,8 @@ export default function Dashboard(props) {
         </div>
 
         <button
-          children=" + Log transaction"
-          id="log_transaction"
+          children=" + Log Expense"
+          id="log_expense"
           onClick={() => {
             setIsOpen(true);
           }}
@@ -70,12 +56,7 @@ export default function Dashboard(props) {
         <Transactions transactionList={transactionList} />
       </div>
 
-      {/* NEW TRANSACTION FORM */}
-      <Modal
-        open={isOpen}
-        onClose={() => setIsOpen(!isOpen)}
-        title="Add new transaction"
-      >
+      <Modal open={isOpen} onClose={() => setIsOpen(!isOpen)}>
         <AddTransaction
           handlerSetList={handlerSetList}
           handlerVisibility={setIsOpen}

@@ -1,11 +1,9 @@
 import React, {useState} from "react";
-import "./BudgetCategory.css";
+import { Button } from "../../../common/Button";
 
 const categories = {
   title: "",
-  amount: 0,
-  color: "#000",
-  value: "",
+  amount: "",
 };
 
 export default function AddCategoryForm(props) {
@@ -20,23 +18,13 @@ export default function AddCategoryForm(props) {
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          category.value = category.title;
+
           category.title =
             category.title.charAt(0).toUpperCase() + category.title.slice(1);
           props.addHandler(category);
           props.handlerVisibility(false);
         }}
       >
-        <div className="wallet_color">
-          <label>Choose a color : </label>
-          <input
-            type="color"
-            name="color"
-            value={category.color}
-            onChange={inputHandler}
-            required
-          />
-        </div>
         <div className="title">
           <label>Title</label>
           <input
@@ -48,7 +36,7 @@ export default function AddCategoryForm(props) {
           />
         </div>
 
-        <button className="submit_btn" children="Submit" type="submit" />
+        <Button children="Submit" type="submit" />
       </form>
     </>
   );

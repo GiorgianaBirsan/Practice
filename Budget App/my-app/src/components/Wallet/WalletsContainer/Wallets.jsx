@@ -4,8 +4,9 @@ import {Button} from "../../common/Button";
 import {Modal} from "../../common/Modal";
 import AddWallet from "../AddWallet/AddWallet";
 import Wallet from "./WalletItem/Wallet";
+import getWallet from "../../../hooks/getWallet";
 
-export default function Wallets() {
+export default function Wallets(props) {
   const [isOpen, setIsOpen] = useState(false);
   const [listWallets, setListWallets] = useState([]);
 
@@ -13,18 +14,15 @@ export default function Wallets() {
     setListWallets([wallet, ...listWallets]);
   };
 
-  //GET / SET WALLET ITEMS FROM/IN LIST FROM LOCAL STORAGE
-  useEffect(() => {
-    const wallets = JSON.parse(localStorage.getItem("listWallets"));
-    setListWallets(wallets);
-  }, []);
+  // useEffect(() => {
+  //   const list = () => {
+  //     const getList = getWallet();
+  //     // setListWallets([getList, ...listWallets]);
+  //      setListWallets([getList,...listWallets]);
+  //   };
 
-  useEffect(() => {
-    if (listWallets) {
-      localStorage.setItem("listWallets", JSON.stringify(listWallets));
-    }
-    // listWallets.forEach((element) => {});
-  }, [listWallets]);
+  //   list();
+  // }, [setListWallets]);
 
   return (
     <>
@@ -38,19 +36,13 @@ export default function Wallets() {
         ></Button>
       </div>
 
-      {/* NEW WALLET ADD FORM */}
-      <Modal
-        open={isOpen}
-        onClose={() => setIsOpen(!isOpen)}
-        title="Add new wallet"
-      >
+      <Modal open={isOpen} onClose={() => setIsOpen(!isOpen)}>
         <AddWallet
           addHandler={addWalletHandler}
           handlerVisibility={setIsOpen}
         />
       </Modal>
 
-      {/* LISTING WALLETS FROM LIST */}
       <div className="wallets_collection">
         {listWallets.length === 0 ? (
           <p>

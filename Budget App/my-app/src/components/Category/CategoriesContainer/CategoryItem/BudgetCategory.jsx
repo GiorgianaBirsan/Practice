@@ -1,33 +1,16 @@
 import React from "react";
 import "./BudgetCategory.css";
 import {SlWallet} from "react-icons/sl";
-import {rgba} from "polished";
 
 export default function BudgetCategory(props) {
-  //  ICONS AND BOX DEFINE STYLE AND COLORS
-  const box_color = {
-    background: `${rgba(props.color, 0.2)}`,
-    borderColor: props.borderColor,
-    display: "flex",
-    width: "40px",
-    height: "40px",
-    borderRadius: "20%",
-    borderWidth: "2px",
-    borderStyle: "solid",
+    const icon_color = {
+    backgroundColor: props.color,
   };
-  const icon = {
-    verticalAlign: "middle",
-    margin: "auto",
-    fontSize: "20px",
-    opacity: "1",
-    color: props.borderColor,
-  };
-
   return (
     <>
       <div className="category">
-        <div style={box_color}>
-          <SlWallet style={icon} />
+        <div className="box_img_cat" style={icon_color} >
+          <SlWallet className="react-icons" />
         </div>
         <div className="category_details">
           <p className="category_title">{props.title}</p>
