@@ -1,7 +1,7 @@
-*{font-size: 18px;
+*{font-size: 17px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;}
 .form, .categories, .title, .date, .amount,.amount-type{
-  padding: 30px;
+  padding: 20px;
   display: flex;
   flex-direction: column;
 }
@@ -19,4 +19,9 @@ input, select{
 #save_transaction{
     width: 30%;
     margin: auto;
+    
+}
+select{
+    max-height: 200px;
+    overflow-y: scroll;
 }

@@ -1,10 +1,10 @@
 import React, {useState} from "react";
-import {Button} from "../../common/Button";
 
 const wallets = {
   name: "",
   amount: "",
   color: "",
+  value: "",
 };
 
 export default function AddWallet(props) {
@@ -19,7 +19,8 @@ export default function AddWallet(props) {
     <form
       onSubmit={(e) => {
         e.preventDefault();
-        // console.log("ccc", wallet);
+
+        wallet.value = wallet.name;
 
         if (wallet.amount.toString().startsWith("0")) {
           alert("Amount can not starts with 0.");
@@ -38,8 +39,10 @@ export default function AddWallet(props) {
           name="color"
           value={wallet.color}
           onChange={inputHandler}
+          required
         />
       </div>
+
       <div className="title">
         <label>Title</label>
         <input
@@ -58,12 +61,11 @@ export default function AddWallet(props) {
           name="amount"
           value={wallet.amount}
           onChange={inputHandler}
-          required
           min="1"
         />
       </div>
 
-      <Button children="Submit" type="submit" />
+      <button className="submit_btn" children="Submit" type="submit" />
     </form>
   );
 }

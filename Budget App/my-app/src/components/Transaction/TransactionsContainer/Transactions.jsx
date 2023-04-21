@@ -5,11 +5,11 @@ import TransactionItem from "./TransactionItem/TransactionItem";
 
 export default function Transactions(props) {
   const {transactionList} = props;
-
+  
   return (
     <React.Fragment>
-      <h1>History</h1>
 
+ <hr />
       <div className="expenses_history">
         {transactionList.map((transaction, index) => {
           return (
@@ -21,6 +21,7 @@ export default function Transactions(props) {
                 date={transaction.date}
                 amount={transaction.amount}
                 amount_type={transaction.amount_type}
+                color={transaction.color}
               />
             </Card>
           );

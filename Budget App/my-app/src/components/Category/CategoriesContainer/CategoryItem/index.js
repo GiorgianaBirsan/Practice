@@ -1,3 +1,3 @@
-import BudgetCategory from "./BudgetCategory";
-import AddCategoryForm from "./AddCategoryForm";
+import { BudgetCategory } from ".";
+import { AddCategoryForm } from ".";
 export {BudgetCategory, AddCategoryForm};

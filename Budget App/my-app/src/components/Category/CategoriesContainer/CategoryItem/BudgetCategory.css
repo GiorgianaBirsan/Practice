@@ -4,19 +4,23 @@
     flex-wrap: nowrap;
     gap:10px;
     margin-top: 20px;
+    
 }
 
-.box_img_cat{
+/* .box_img_cat{
     display: flex;
-    background: #2774cc;
     width: 40px;
     height: 40px;
     border-radius: 20%;
-}
+    border-width: 2px;
+    border-style: solid;
+   
+} */
 
 .category_details{
     display: flex;
     flex-direction: column;
+    
 }
 .category_title{
    margin: 0;
@@ -29,10 +33,14 @@
     font-weight:600;
      margin: 0;
 }
-.react-icons {
-  vertical-align: middle;
-  color: aliceblue;
-  margin: auto;
-  font-size: 20px;
-}
 
+.submit_btn{
+    background-color: rgb(41, 116, 228);
+    margin-left: 45%;
+    color: rgb(233, 233, 233);
+    border-radius: 5px;
+    border:solid 1px  rgb(231, 231, 231);
+    text-align: center;
+    align-items: center;
+    padding: 10px 20px;
+}
