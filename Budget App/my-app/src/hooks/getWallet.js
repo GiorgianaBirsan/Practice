@@ -1,20 +1,20 @@
 export default function getWallet() {
-  fetch("https://jsonblob.com/1089898374311985152", {
-    method: "GET",
+  fetch('https://jsonblob.com/1089898374311985152', {
+    method: 'GET',
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
     },
   })
-    .then((result) => {
+    .then(result => {
       if (result.ok) {
         return result.json();
       }
     })
-    .then((data) => {
-      console.log("data", data);
+    .then(data => {
+      console.log('data', data);
       return data;
     })
-    .catch((error) => {
-      console.error("err", error);
+    .catch(error => {
+      console.error('err', error);
     });
 }

@@ -1,2 +1,2 @@
-import Wallet from "./Wallet";
-export {Wallet};
+import Wallet from './Wallet';
+export { Wallet };

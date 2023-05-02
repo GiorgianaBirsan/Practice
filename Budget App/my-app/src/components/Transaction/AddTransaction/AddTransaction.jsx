@@ -1,43 +1,75 @@
-import React, {useState} from "react";
-import "./AddTransaction.css";
+import React, { useState, useEffect } from 'react';
+import './AddTransaction.css';
 
-const categories = [
-  {label: "-", value: ""},
-  {label: "Utilities", value: "utilities"},
-  {label: "Shopping", value: "shopping"},
-  {label: "Personal", value: "personal"},
-  {label: "Saving", value: "saving"},
-];
 const amountType = [
-  {label: "-", value: ""},
-  {label: "Income", value: "income"},
-  {label: "Expense", value: "expense"},
+  { label: '-', value: '' },
+  { label: 'Income', value: 'income' },
+  { label: 'Expense', value: 'expense' },
 ];
+
 const initial_values = {
-  title: "",
-  date: "",
-  amount: "",
-  category_type: "",
-  amount_type: "",
+  title: '',
+  date: '',
+  amount: '',
+  category_type: '',
+  amount_type: '',
+  color: '',
+  wallet: '',
 };
 
 export default function AddTransaction(props) {
   const [transaction, setTransaction] = useState(initial_values);
 
-  const inputHandler = (event) => {
-    const {name, value} = event.target;
-    setTransaction({...transaction, [name]: value});
+  const wallets = JSON.parse(localStorage.getItem('listWallets'));
+  const categories = JSON.parse(localStorage.getItem('listCategories'));
+
+  const inputHandler = event => {
+    const { name, value } = event.target;
+
+    //SELECT THE RIGHT COLOR FROM EACH DEFINED/SELECTED CATEGORY, TO SET THE COLOR OF LEFT DIV-MARK OF TRANSACTION ITEMS
+    categories.find(cat =>
+      cat.value === transaction.category_type ? (transaction.color = cat.color) : null
+    );
+    setTransaction({ ...transaction, [name]: value });
   };
 
-  const onSubmitHandler = (e) => {
+  //FORMATING DATE STRING DD.MM.YYYY
+  function formatDate(date) {
+    const formatedDate = date.split('-').reverse().join('.');
+    transaction.date = formatedDate;
+  }
+
+  const onSubmitHandler = e => {
     e.preventDefault();
+    formatDate(transaction.date);
     props.handlerSetList(transaction);
     props.handlerVisibility(false);
   };
+
   return (
     <form className="form" onSubmit={onSubmitHandler}>
+      <div className="wallet">
+        <label>Wallet</label>
+        <select
+          id="wallet_type"
+          name="wallet"
+          value={transaction.wallet}
+          onChange={inputHandler}
+          required
+        >
+          {wallets.map((wallet, index) => {
+            return (
+              <option key={index} value={wallet.value}>
+                {wallet.name}
+              </option>
+            );
+          })}
+        </select>
+      </div>
+
       <div className="categories">
         <label>Category</label>
+
         <select
           id="category_type"
           name="category_type"
@@ -48,12 +80,13 @@ export default function AddTransaction(props) {
           {categories.map((category, index) => {
             return (
               <option key={index} value={category.value}>
-                {category.label}
+                {category.title}
               </option>
             );
           })}
         </select>
       </div>
+
       <div className="title">
         <label>Title</label>
         <input
@@ -106,7 +139,7 @@ export default function AddTransaction(props) {
         </select>
       </div>
 
-      <button id="save_transaction" children="Save" type="submit" />
+      <button id="save_transaction" className="submit_btn" children="Save" type="submit" />
     </form>
   );
 }

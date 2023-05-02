@@ -1,2 +1,2 @@
-import Navigation from "./Navigation";
-export {Navigation};
+import Navigation from './Navigation';
+export { Navigation };

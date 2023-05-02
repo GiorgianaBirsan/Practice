@@ -1,2 +1,2 @@
-import Transactions from "./Transactions";
-export {Transactions};
+import Transactions from './Transactions';
+export { Transactions };

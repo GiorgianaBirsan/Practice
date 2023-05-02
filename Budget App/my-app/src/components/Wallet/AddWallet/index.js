@@ -1,2 +1,2 @@
-import AddWallet from "./AddWallet";
-export {AddWallet};
+import AddWallet from './AddWallet';
+export { AddWallet };

@@ -1,28 +1,30 @@
-import React, {useState, useEffect} from "react";
-import "./Wallets.css";
-import {Button} from "../../common/Button";
-import {Modal} from "../../common/Modal";
-import AddWallet from "../AddWallet/AddWallet";
-import Wallet from "./WalletItem/Wallet";
-import getWallet from "../../../hooks/getWallet";
+import React, { useState, useEffect } from 'react';
+import './Wallets.css';
+import { Button } from '../../common/Button';
+import { Modal } from '../../common/Modal';
+import AddWallet from '../AddWallet/AddWallet';
+import Wallet from './WalletItem/Wallet';
 
-export default function Wallets(props) {
+export default function Wallets() {
   const [isOpen, setIsOpen] = useState(false);
   const [listWallets, setListWallets] = useState([]);
 
-  const addWalletHandler = (wallet) => {
+  const addWalletHandler = wallet => {
     setListWallets([wallet, ...listWallets]);
   };
 
-  // useEffect(() => {
-  //   const list = () => {
-  //     const getList = getWallet();
-  //     // setListWallets([getList, ...listWallets]);
-  //      setListWallets([getList,...listWallets]);
-  //   };
+  //GET / SET WALLET ITEMS FROM/IN LIST FROM LOCAL STORAGE
+  useEffect(() => {
+    const wallets = JSON.parse(localStorage.getItem('listWallets'));
+    setListWallets(wallets);
+  }, []);
 
-  //   list();
-  // }, [setListWallets]);
+  useEffect(() => {
+    if (listWallets) {
+      localStorage.setItem('listWallets', JSON.stringify(listWallets));
+    }
+    // listWallets.forEach((element) => {});
+  }, [listWallets]);
 
   return (
     <>
@@ -36,13 +38,12 @@ export default function Wallets(props) {
         ></Button>
       </div>
 
-      <Modal open={isOpen} onClose={() => setIsOpen(!isOpen)}>
-        <AddWallet
-          addHandler={addWalletHandler}
-          handlerVisibility={setIsOpen}
-        />
+      {/* NEW WALLET ADD FORM */}
+      <Modal open={isOpen} onClose={() => setIsOpen(!isOpen)} title="Add new wallet">
+        <AddWallet addHandler={addWalletHandler} handlerVisibility={setIsOpen} />
       </Modal>
 
+      {/* LISTING WALLETS FROM LIST */}
       <div className="wallets_collection">
         {listWallets.length === 0 ? (
           <p>
@@ -51,12 +52,7 @@ export default function Wallets(props) {
         ) : (
           listWallets.map((wallet, index) => {
             return (
-              <Wallet
-                key={index}
-                name={wallet.name}
-                amount={wallet.amount}
-                color={wallet.color}
-              />
+              <Wallet key={index} name={wallet.name} amount={wallet.amount} color={wallet.color} />
             );
           })
         )}
