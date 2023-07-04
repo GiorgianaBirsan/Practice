@@ -1,68 +1,20 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<h1>Real Estate</h1>
 
-## Available Scripts
+<p>This application is about adding new rents or real estate to be sold.</p>
+<p>I created this project using <em>ReactJS</em> and styling with <em>ChakraUI.</em></p>
 
-In the project directory, you can run:
+<p>It's a very simple application opened with a click button which also opens a modal form to add the details about the rent. The user has to complete the inputs or select options from the dropdown menu, but also upload an image of the apartment.</p>
 
-### `npm start`
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+![image](https://github.com/GiorgianaBirsan/Practicing-React/assets/64731577/f8bf1929-81ce-4eaa-876e-8d3a5f540047)
+![image](https://github.com/GiorgianaBirsan/Practicing-React/assets/64731577/eb7ea5bb-1d88-4865-b3e6-3931ab07d4bb)
+![image](https://github.com/GiorgianaBirsan/Practicing-React/assets/64731577/6758eb43-9c9e-4d44-955a-8f92f3de3b83)
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+<p>After rendering the ad, the creator has the possibility to edit or delete the ad from the list. This is all stocked in Json Blob</p>
 
-### `npm test`
+![image](https://github.com/GiorgianaBirsan/Practicing-React/assets/64731577/7e68efd2-75cc-4399-aaa6-397c2b0b8056)
+![image](https://github.com/GiorgianaBirsan/Practicing-React/assets/64731577/b30f5b29-8ae9-4e07-a307-9c3fbd1b56bb)
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
