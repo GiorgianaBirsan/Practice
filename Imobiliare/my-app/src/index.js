@@ -14,7 +14,6 @@ export default function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Dashboard />}></Route>
-          {/* <Route path="/" element={<Navbar />}></Route> */}
         </Routes>
       </BrowserRouter>
     </ChakraProvider>
