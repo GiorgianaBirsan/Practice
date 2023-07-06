@@ -30,7 +30,7 @@ export default function DeleteAd(props) {
             colorScheme="blue"
             p={5}
             onClick={() => {
-              props.deletehandler(props.id);
+              props.deletehandlerX(props.id);
               setIsOpen(!isOpen);
             }}
           >

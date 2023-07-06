@@ -1,4 +1,13 @@
-import { FormControl, FormLabel, Input, Button, Box, HStack, Select } from '@chakra-ui/react';
+import {
+  FormControl,
+  FormLabel,
+  Input,
+  Button,
+  Box,
+  HStack,
+  Select,
+  Textarea,
+} from '@chakra-ui/react';
 import React, { useState } from 'react';
 
 const initialValues = {
@@ -10,9 +19,8 @@ const initialValues = {
   surface: '',
   phone: '',
   room: '',
-  file: 'https://t4.ftcdn.net/jpg/04/73/25/49/360_F_473254957_bxG9yf4ly7OBO5I0O5KABlN930GwaMQz.jpg'
+  file: 'https://t4.ftcdn.net/jpg/04/73/25/49/360_F_473254957_bxG9yf4ly7OBO5I0O5KABlN930GwaMQz.jpg',
 };
-
 
 let nrOfRooms = [
   { label: '1 room', value: '1 room' },
@@ -24,7 +32,7 @@ let nrOfRooms = [
 
 function AddForm(props) {
   const [values, setValues] = useState(props.ad ? props.ad : initialValues);
-  const [file, setFile] = useState(initialValues.file)
+  const [file, setFile] = useState(initialValues.file);
 
   function handleChange(e) {
     setFile(URL.createObjectURL(e.target.files[0]));
@@ -32,8 +40,7 @@ function AddForm(props) {
 
   if (handleChange) {
     values.file = file;
-   } 
-  
+  }
 
   const handlerInputForm = event => {
     const { name, value } = event.target;
@@ -79,7 +86,7 @@ function AddForm(props) {
             <FormLabel mt={5} fontSize="xs">
               Description
             </FormLabel>
-            <Input
+            <Textarea
               value={values.description}
               variant="outline"
               type="text"

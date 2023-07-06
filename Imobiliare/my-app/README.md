@@ -14,6 +14,16 @@
 
 ![image](https://github.com/GiorgianaBirsan/Practicing-React/assets/64731577/7e68efd2-75cc-4399-aaa6-397c2b0b8056)
 ![image](https://github.com/GiorgianaBirsan/Practicing-React/assets/64731577/b30f5b29-8ae9-4e07-a307-9c3fbd1b56bb)
+=======
+
+![image](https://github.com/GiorgianaBirsan/Practicing-React/assets/64731577/f8bf1929-81ce-4eaa-876e-8d3a5f540047)
+![image](https://github.com/GiorgianaBirsan/Practicing-React/assets/64731577/eb7ea5bb-1d88-4865-b3e6-3931ab07d4bb)
+![image](https://github.com/GiorgianaBirsan/Practicing-React/assets/64731577/6758eb43-9c9e-4d44-955a-8f92f3de3b83)
+
+<p>After rendering the ad, the creator has the possibility to edit or delete the ad from the list. This is all stocked in Json Blob</p>
+
+![image](https://github.com/GiorgianaBirsan/Practicing-React/assets/64731577/7e68efd2-75cc-4399-aaa6-397c2b0b8056)
+![image](https://github.com/GiorgianaBirsan/Practicing-React/assets/64731577/b30f5b29-8ae9-4e07-a307-9c3fbd1b56bb)
 
 
 
